@@ -1,0 +1,7 @@
+*.DS_Store
+.vscode
+.idea
+wolframbot
+*.gob
+*.swp
+*.bak
