@@ -97,6 +97,7 @@ func getAnswer(question string, verbose bool) (string, error) {
 			response += pod.Title + ": "
 		}
 		for _, subpod := range pod.Subpods {
+			subpod.Plaintext = strings.ReplaceAll(subpod.Plaintext, "\n", "  \n")
 			if subpod.Plaintext == "" {
 				continue
 			} else if pod.Title == "Result" {
