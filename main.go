@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
+	"text/tabwriter"
 
 	"github.com/jwalton/gchalk"
 	api "github.com/quackduck/devzat/devzatapi"
@@ -94,23 +96,33 @@ func getAnswer(question string, verbose bool) (string, error) {
 			continue
 		}
 		if pod.Title != "Result" {
-			response += pod.Title + ": "
+			response += pod.Title + ":  \n  \n"
 		}
 		for _, subpod := range pod.Subpods {
 			subpod.Plaintext = strings.ReplaceAll(subpod.Plaintext, "\n", "  \n")
 			if subpod.Plaintext == "" {
 				continue
-			} else if pod.Title == "Result" {
-				response += gchalk.BrightYellow(subpod.Plaintext) + "  \n"
-			} else {
-				response += subpod.Plaintext + "  \n"
 			}
+			if pod.Title == "Result" {
+				subpod.Plaintext = gchalk.BrightYellow(subpod.Plaintext)
+			}
+			subpod.Plaintext = strings.TrimPrefix(subpod.Plaintext, " | ")
+			//fmt.Println("`" + subpod.Plaintext + "`")
+			response += alignTabs(strings.ReplaceAll(subpod.Plaintext, "|", "\t")) + "\n\n"
 		}
 		if pod.Title == "Result" {
 			response += "  \n"
 		}
 	}
 	return response, nil
+}
+
+func alignTabs(s string) string {
+	b := new(bytes.Buffer)
+	w := tabwriter.NewWriter(b, 0, 0, 1, ' ', 0)
+	w.Write([]byte(s))
+	w.Flush()
+	return b.String()
 }
 
 type WolframAPIResult struct {
