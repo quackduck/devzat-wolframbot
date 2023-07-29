@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/jwalton/gchalk"
+	api "github.com/quackduck/devzat/devzatapi"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 	"text/tabwriter"
-
-	"github.com/jwalton/gchalk"
-	api "github.com/quackduck/devzat/devzatapi"
 )
 
 var (
@@ -22,14 +21,23 @@ var (
 )
 
 func main() {
-	s, err := api.NewSession("devzat.hackclub.com:5556", devzatToken)
+	if len(os.Args) <= 1 || os.Args[1] == "-h" || os.Args[1] == "--help" {
+		fmt.Println(`Usage: wolframbot <address>
+address: The address of the Devzat server to connect to. (e.g. devzat.hackclub.com:5556)
+
+Environment variables:
+$DEVZAT_TOKEN: The token to use to connect to the Devzat server.
+$WOLFRAM_APP_ID: The WolframAlpha app ID to use.`)
+		return
+	}
+	s, err := api.NewSession(os.Args[1], devzatToken)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("error while creating session:", err)
 		return
 	}
 	err = s.SendMessage(api.Message{Room: "#main", From: name, Data: "I am online."})
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("error sending intro message:", err)
 		return
 	}
 	err = s.RegisterCmd("wolf", "[-v/--verbose] <query>", "Ask WolframAlpha a question", func(cmdCall api.CmdCall, err error) {
@@ -57,11 +65,11 @@ func main() {
 		err = s.SendMessage(api.Message{Room: cmdCall.Room, From: name, Data: answer})
 		if err != nil {
 			fmt.Println(err)
-			return
 		}
+		return
 	})
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("error registering command", err)
 		return
 	}
 	err = <-s.ErrorChan
