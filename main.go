@@ -104,7 +104,7 @@ func getAnswer(question string, verbose bool) (string, error) {
 			continue
 		}
 		if pod.Title != "Result" {
-			response += pod.Title + ":  \n  \n"
+			response += gchalk.Italic(gchalk.Bold(pod.Title)) + ":  \n  \n"
 		}
 		for _, subpod := range pod.Subpods {
 			subpod.Plaintext = strings.ReplaceAll(subpod.Plaintext, "\n", "  \n")
@@ -114,8 +114,6 @@ func getAnswer(question string, verbose bool) (string, error) {
 			if pod.Title == "Result" {
 				subpod.Plaintext = gchalk.BrightYellow(subpod.Plaintext)
 			}
-			subpod.Plaintext = strings.TrimPrefix(subpod.Plaintext, " | ")
-			//fmt.Println("`" + subpod.Plaintext + "`")
 			response += alignTabs(strings.ReplaceAll(subpod.Plaintext, "|", "\t")) + "\n\n"
 		}
 		if pod.Title == "Result" {
@@ -130,7 +128,11 @@ func alignTabs(s string) string {
 	w := tabwriter.NewWriter(b, 0, 0, 1, ' ', 0)
 	w.Write([]byte(s))
 	w.Flush()
-	return b.String()
+	res := b.String()
+	if len(res) > 0 && res[0] == ' ' {
+		res = "` `" + res // markdown hack to preserve leading spaces
+	}
+	return res
 }
 
 type WolframAPIResult struct {
