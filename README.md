@@ -1,5 +1,5 @@
 <div align="center">
-<img src="[https://github.com/quackduck/devzat/assets/38882631/046fbb4d-dff2-41e9-a61c-271d0820473e](https://www.wolframalpha.com/_next/static/images/Logo_1t99UmgS.svg)"/>
+<img src="https://www.wolframalpha.com/_next/static/images/Logo_1t99UmgS.svg"/>
 </div>
 
 # WolframBot Integration for Devzat
