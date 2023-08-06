@@ -10,13 +10,13 @@ Before running the WolframBot, ensure you have the following environment variabl
 
     DEVZAT_TOKEN: The token to connect to the Devzat server.
     WOLFRAM_APP_ID: The WolframAlpha app ID to use.
-'
+
 
 ## Useage 
 
 To ask a question to WolframAlpha through the WolframBot, you can use the following command:
 
-'''
-wolf -v What is the capital of France?
-'''
+
+`wolf -v What is the capital of France?`
+
 The -v or --verbose option can be used to display additional details in the response.
