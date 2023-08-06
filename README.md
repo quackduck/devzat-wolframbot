@@ -4,12 +4,11 @@
 
 # WolframBot Integration for Devzat
 
-This is a simple integration of a WolframBot for Devzat, allowing you to ask questions and get answers from WolframAlpha's API.
-The bot sends the responses to the specified Devzat server in the desired format.
+This is an integration of WolframBot for Devzat server, this integration enables users to ask questions and get answers from WolframAlpha's API.
 
-## Prerequisites
+## Adding the Integration (placeholder for plugin install)
 
-Before running the WolframBot, ensure you have the following environment variables set:
+Before running the WolframBot, ensure you have the following environment variables set: 
 
 
     DEVZAT_TOKEN: The token to connect to the Devzat server.
