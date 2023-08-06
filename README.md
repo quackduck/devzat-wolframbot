@@ -1,3 +1,7 @@
+<div align="center">
+<img src="[https://github.com/quackduck/devzat/assets/38882631/046fbb4d-dff2-41e9-a61c-271d0820473e](https://www.wolframalpha.com/_next/static/images/Logo_1t99UmgS.svg)"/>
+</div>
+
 # WolframBot Integration for Devzat
 
 This is a simple integration of a WolframBot for Devzat, allowing you to ask questions and get answers from WolframAlpha's API.
