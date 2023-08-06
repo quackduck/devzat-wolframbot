@@ -7,10 +7,10 @@ The bot sends the responses to the specified Devzat server in the desired format
 
 Before running the WolframBot, ensure you have the following environment variables set:
 
-'''
+
     DEVZAT_TOKEN: The token to connect to the Devzat server.
     WOLFRAM_APP_ID: The WolframAlpha app ID to use.
-'''
+'
 
 ## Useage 
 
