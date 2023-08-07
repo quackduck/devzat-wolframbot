@@ -7,7 +7,7 @@
 This is an integration of WolframBot for Devzat server, this integration enables users to ask questions and get answers from WolframAlpha's API.
 
 ## Adding the Integration
-Just download the repo to the same folder of your Devzat instance and ensure you have provided your Wolfram Alpha API key to replace 'WOLFRAM_APP_ID' and the 'DEVZAT_TOKEN' to connect it to your instance. Then you should just run 'main.go' and Wolfram should be active on your Devzat Server!
+Just download the repo to the same folder of your Devzat instance and ensure you have provided your Wolfram Alpha API key to replace `WOLFRAM_APP_ID` and the `DEVZAT_TOKEN` to connect it to your instance. Then you should just run `main.go` and Wolfram should be active on your Devzat Server!
 
 ## Useage 
 
