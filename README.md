@@ -8,6 +8,8 @@
 
 ## The full power of Wolfram|Alpha in a terminal-based chat platform
 
+<img width="1710" alt="image" src="https://github.com/quackduck/devzat-wolframbot/assets/38882631/13e3638b-f26e-49f4-8146-a9808e3f3b94">
+
 <img width="1710" alt="image" src="https://github.com/CaenJones/devzat-wolframbot/assets/38882631/94a2b967-b43a-4b01-883d-5f0458e0bddc">
 <img width="1706" alt="image" src="https://github.com/CaenJones/devzat-wolframbot/assets/38882631/6bba6702-742e-41e3-ba84-55b7442ecc31">
 
